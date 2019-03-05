@@ -1,9 +1,11 @@
 package com.vogella.java.projetmobile;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.vogella.java.projetmobile.model.Anime;
 
@@ -34,5 +36,12 @@ public class MainActivity extends Activity {
         // define an adapter
         mAdapter = new MyAdapter(input);
         recyclerView.setAdapter(mAdapter);
+    }
+
+    public void details(View view){
+        // cf. randomMe() dans le MainActivity de MyFirstApp
+        // cf. aussi main_activity.xml et second_activity.xml
+        Intent detailsIntent = new Intent(this , DetailsActivity.class);
+
     }
 }

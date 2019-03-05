@@ -14,7 +14,7 @@ public class RestAnimeResponse {
     public void setCount(int count) {
         this.count = count;
     }
-    
+
     public List<Anime> getResults() {
         return top;
     }
