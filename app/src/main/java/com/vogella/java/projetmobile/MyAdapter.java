@@ -11,9 +11,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.vogella.java.projetmobile.R;
+import com.vogella.java.projetmobile.model.Anime;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-    private List<String> values;
+    private List<Anime> values;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -32,7 +33,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         }
     }
 
-    public void add(int position, String item) {
+    public void add(int position, Anime item) {
         values.add(position, item);
         notifyItemInserted(position);
     }
@@ -43,8 +44,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(List<String> myDataset) {
-        values = myDataset;
+    public MyAdapter(List<Anime> myDataset) {
+        this.values = myDataset;
     }
 
     // Create new views (invoked by the layout manager)
@@ -66,7 +67,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        final String name = values.get(position);
+        Anime currentAnime = values.get(position);
+        final String name = currentAnime.getTitle();
         holder.txtHeader.setText(name);
         holder.txtHeader.setOnClickListener(new OnClickListener() {
             @Override
