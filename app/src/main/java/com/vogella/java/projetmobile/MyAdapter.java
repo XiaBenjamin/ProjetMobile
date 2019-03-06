@@ -1,6 +1,5 @@
 package com.vogella.java.projetmobile;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import android.support.v7.widget.RecyclerView;
@@ -10,11 +9,15 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.vogella.java.projetmobile.R;
 import com.vogella.java.projetmobile.model.Anime;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private List<Anime> values;
+    private final OnItemClickListener listener;
+
+    public interface OnItemClickListener {
+        void onItemClick(Anime item);
+    }
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -44,8 +47,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(List<Anime> myDataset) {
+    public MyAdapter(List<Anime> myDataset, OnItemClickListener listener) {
         this.values = myDataset;
+        this.listener = listener;
     }
 
     // Create new views (invoked by the layout manager)
@@ -67,13 +71,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        Anime currentAnime = values.get(position);
+        final Anime currentAnime = values.get(position);
         final String name = currentAnime.getTitle();
         holder.txtHeader.setText(name);
-        holder.txtHeader.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                remove(position);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                listener.onItemClick(currentAnime);
             }
         });
 

@@ -5,11 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
+import com.google.gson.Gson;
 import com.vogella.java.projetmobile.model.Anime;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends Activity {
@@ -34,14 +33,20 @@ public class MainActivity extends Activity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         // define an adapter
-        mAdapter = new MyAdapter(input);
+        mAdapter = new MyAdapter(input, new MyAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Anime item) {
+                details(item);
+            }
+        });
         recyclerView.setAdapter(mAdapter);
     }
 
-    public void details(View view){
-        // cf. randomMe() dans le MainActivity de MyFirstApp
-        // cf. aussi main_activity.xml et second_activity.xml
+    public void details(Anime anime){
+        Gson gson = new Gson();
+        String json = gson.toJson(anime);
         Intent detailsIntent = new Intent(this , DetailsActivity.class);
-
+        detailsIntent.putExtra("anime" , json);
+        startActivity(detailsIntent);
     }
 }
