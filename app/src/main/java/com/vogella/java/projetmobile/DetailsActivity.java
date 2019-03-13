@@ -24,5 +24,40 @@ public class DetailsActivity extends AppCompatActivity {
 
         ImageView viewImage = (ImageView) findViewById(R.id.detailsImage);
         Picasso.with(getBaseContext()).load(json.getImage_url()).into(viewImage);
+
+        TextView viewScore = (TextView) findViewById(R.id.detailsScore);
+        viewScore.setText(""+json.getScore());
+
+        TextView viewRank = (TextView) findViewById(R.id.detailsRank);
+        viewRank.setText("#"+json.getRank());
+
+        TextView viewMembers = (TextView) findViewById(R.id.detailsMembers);
+        viewMembers.setText("by "+json.getMembers()+" members");
+
+        TextView viewEpisodes = (TextView) findViewById(R.id.detailsEpisodes);
+        viewEpisodes.setText(""+json.getEpisodes());
+
+        TextView viewType = (TextView) findViewById(R.id.detailsType);
+        viewType.setText(json.getType());
+
+        TextView viewStart = (TextView) findViewById(R.id.detailsStart);
+        viewStart.setText("from "+json.getStart_date());
+
+        TextView viewEnd = (TextView) findViewById(R.id.detailsEnd);
+        if(json.getEnd_date() != null && !json.getEnd_date().isEmpty()){
+            viewEnd.setText(" to "+json.getEnd_date());
+        } else {
+            viewEnd.setText(" to ?");
+        }
+
+        TextView viewStatus = (TextView) findViewById(R.id.detailsStatus);
+        if(json.getEnd_date() != null && !json.getEnd_date().isEmpty()){
+            viewStatus.setText("Finished Airing");
+        } else {
+            viewStatus.setText("Currently Airing");
+        }
+
+        //ImageView viewIcon = (ImageView) findViewById(R.id.iconType);
+        //viewIcon.setImageDrawable(@drawable/ic_action_name);
     }
 }

@@ -88,7 +88,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 listener.onItemClick(currentAnime);
             }
         });
-        holder.txtFooter.setText("Rank : "+rank+"   Score : "+score+"   Popularity : "+members);
+        holder.txtFooter.setText("Rank : "+rank+"    "+"   Score : "+score);
 
         Picasso.with(context).load(currentAnime.getImage_url()).into(holder.imgIcon);
     }
