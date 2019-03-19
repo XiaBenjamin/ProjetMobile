@@ -57,7 +57,15 @@ public class DetailsActivity extends AppCompatActivity {
             viewStatus.setText("Currently Airing");
         }
 
-        //ImageView viewIcon = (ImageView) findViewById(R.id.iconType);
-        //viewIcon.setImageDrawable(@drawable/ic_action_name);
+        ImageView viewIcon = (ImageView) findViewById(R.id.iconType);
+        if(json.getType().equals("Movie")){
+            viewIcon.setImageResource(R.drawable.ic_movie_name);
+        } else if(json.getType().equals("OVA")) {
+            viewIcon.setImageResource(R.drawable.ic_cd_name);
+        } else if (json.getType().equals("TV")) {
+            viewIcon.setImageResource(R.drawable.ic_tv_name);
+        }
+
+
     }
 }
