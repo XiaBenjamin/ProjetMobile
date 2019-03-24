@@ -18,7 +18,7 @@ Ce projet mobile met en place l'utilisation de l'API Jikan. La liste des objets 
 ### Liste
 Liste du top 50 des animes selon le site MyAnimeList
 
-<img src="readme_jpg/list.jpg" alt="list">
+<img src="readme_jpg/list.png" alt="list">
 
 ### Détails
 Détails de l'anime
