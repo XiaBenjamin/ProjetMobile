@@ -1,9 +1,11 @@
-package com.vogella.java.projetmobile;
+package com.vogella.java.projetmobile.controller;
 
 import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.vogella.java.projetmobile.model.JikanAPI;
+import com.vogella.java.projetmobile.view.MainActivity;
 import com.vogella.java.projetmobile.model.Anime;
 import com.vogella.java.projetmobile.model.RestAnimeResponse;
 
@@ -23,11 +25,6 @@ public class MainController {
     }
 
     public void onStart(){
-
-        //Pour ceux qui veulent aller plus loin
-        //Singleton
-        //Pour ceux qui veulent aller encore plus loin
-        // Injection de dépendances
 
         Gson gson = new GsonBuilder()
                 .setLenient()

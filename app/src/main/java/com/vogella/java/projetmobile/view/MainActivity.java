@@ -1,4 +1,4 @@
-package com.vogella.java.projetmobile;
+package com.vogella.java.projetmobile.view;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,6 +7,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.google.gson.Gson;
+import com.vogella.java.projetmobile.R;
+import com.vogella.java.projetmobile.controller.MainController;
 import com.vogella.java.projetmobile.model.Anime;
 
 import java.util.List;
@@ -29,10 +31,8 @@ public class MainActivity extends Activity {
 
     public void showList(List<Anime> input){
         recyclerView.setHasFixedSize(true);
-        // use a linear layout manager
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        // define an adapter
         mAdapter = new MyAdapter(input, new MyAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Anime item) {

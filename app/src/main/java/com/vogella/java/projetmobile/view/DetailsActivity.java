@@ -1,4 +1,4 @@
-package com.vogella.java.projetmobile;
+package com.vogella.java.projetmobile.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
+import com.vogella.java.projetmobile.R;
 import com.vogella.java.projetmobile.model.Anime;
 
 public class DetailsActivity extends AppCompatActivity {
