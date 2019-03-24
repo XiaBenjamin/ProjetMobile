@@ -1,13 +1,8 @@
-package com.vogella.java.projetmobile;
+package com.vogella.java.projetmobile.model;
 
-
-import com.vogella.java.projetmobile.model.RestAnimeResponse;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Query;
 
 public interface JikanAPI {
 
