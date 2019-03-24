@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
             public void onItemClick(Anime item) {
                 details(item);
             }
-        });
+        }, getBaseContext());
         recyclerView.setAdapter(mAdapter);
     }
 

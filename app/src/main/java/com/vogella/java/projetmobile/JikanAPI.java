@@ -11,6 +11,6 @@ import retrofit2.http.Query;
 
 public interface JikanAPI {
 
-    @GET("top/anime/1/favorite")
+    @GET("top/anime/"+"1")
     Call<RestAnimeResponse> getListAnime();
 }

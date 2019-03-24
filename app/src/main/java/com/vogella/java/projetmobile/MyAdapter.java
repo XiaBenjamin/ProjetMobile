@@ -2,18 +2,21 @@ package com.vogella.java.projetmobile;
 
 import java.util.List;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.vogella.java.projetmobile.model.Anime;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private List<Anime> values;
     private final OnItemClickListener listener;
+    private final Context context;
 
     public interface OnItemClickListener {
         void onItemClick(Anime item);
@@ -26,6 +29,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // each data item is just a string in this case
         public TextView txtHeader;
         public TextView txtFooter;
+        public ImageView imgIcon;
         public View layout;
 
         public ViewHolder(View v) {
@@ -33,6 +37,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             layout = v;
             txtHeader = (TextView) v.findViewById(R.id.firstLine);
             txtFooter = (TextView) v.findViewById(R.id.secondLine);
+            imgIcon = (ImageView) v.findViewById(R.id.icon);
         }
     }
 
@@ -47,9 +52,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(List<Anime> myDataset, OnItemClickListener listener) {
+    public MyAdapter(List<Anime> myDataset, OnItemClickListener listener, Context context) {
         this.values = myDataset;
         this.listener = listener;
+        this.context = context;
     }
 
     // Create new views (invoked by the layout manager)
@@ -73,14 +79,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // - replace the contents of the view with that element
         final Anime currentAnime = values.get(position);
         final String name = currentAnime.getTitle();
+        final double score = currentAnime.getScore();
+        final int rank = currentAnime.getRank();
+        final int members = currentAnime.getMembers();
         holder.txtHeader.setText(name);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
                 listener.onItemClick(currentAnime);
             }
         });
+        holder.txtFooter.setText("Rank : "+rank+"    "+"   Score : "+score);
 
-        holder.txtFooter.setText("Footer: " + name);
+        Picasso.with(context).load(currentAnime.getImage_url()).into(holder.imgIcon);
     }
 
     // Return the size of your dataset (invoked by the layout manager)
