@@ -23,4 +23,4 @@ Liste du top 50 des animes selon le site MyAnimeList
 ### Détails
 Détails de l'anime
 
-<img src="readme_jpg/details.jpg" alt="details">
+<img src="readme_jpg/details.png" alt="details">
